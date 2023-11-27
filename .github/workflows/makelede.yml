@@ -26,14 +26,17 @@ jobs:
         sudo -E apt-get -qq clean
         sudo -E timedatectl set-timezone "Asia/Shanghai"
         
-    - name: ls
-      run: ls -a
-
     - name: Clone source code
       run: |
         df -hT $PWD
         git clone $REPO_URL openwrt
-
+        
+    - name: Move project
+      run: mv $GITHUB_WORKSPACE/openwrt/* $GITHUB_WORKSPACE
+      
+    - name: ls
+      run: ls -a
+      
     - name: Load custom feeds
       run: mv feeds.conf.default.bak openwrt/feeds.conf.default
 
