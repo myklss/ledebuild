@@ -55,7 +55,8 @@ jobs:
         mv .config openwrt/.config
 
     - name: Download packages
-        run: make download -j16
+      run: |
+        make download -j16
 
     - name: Compile firmware
         run: |
