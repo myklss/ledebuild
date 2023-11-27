@@ -37,26 +37,19 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: Load custom feeds
-      run: |
-        mv feeds.conf.default openwrt/feeds.conf.default
+      run: mv feeds.conf.default openwrt/feeds.conf.default
 
-    - name: Update feeds
-      run: openwrt/scripts/feeds update -a
-
-    - name: Install feeds
-      run: openwrt/scripts/feeds install -a
+    - name: Update feeds And Install feeds
+      run: openwrt/scripts/feeds update -a && openwrt/scripts/feeds install -a
 
     - name: Modify default IP
-      run: |
-        sed -i 's/192.168.1.1/192.168.7.41/g' openwrt/package/base-files/files/bin/config_generate
+      run: sed -i 's/192.168.1.1/192.168.7.41/g' openwrt/package/base-files/files/bin/config_generate
         
     - name: Load custom configuration
-      run: |
-        mv .config openwrt/.config
+      run: mv .config openwrt/.config
 
     - name: Download packages
-      run: |
-        cd openwrt && make download -j16
+      run: cd openwrt && make download -j16
 
     - name: Compile firmware
       run: |
