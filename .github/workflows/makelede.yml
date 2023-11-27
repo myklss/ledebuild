@@ -56,7 +56,7 @@ jobs:
 
     - name: Download packages
       run: |
-        make download -j16
+        cd openwrt && make download -j16
 
     - name: Compile firmware
         run: |
