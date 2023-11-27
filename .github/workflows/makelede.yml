@@ -28,6 +28,9 @@ jobs:
         sudo -E timedatectl set-timezone "Asia/Shanghai"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        
+    - name: ls
+      run: ls -a
 
     - name: Clone source code
       working-directory: /workdir
@@ -59,9 +62,9 @@ jobs:
           echo "======================="
           df -h
           echo "======================="
-          du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
-          du -h --max-depth=1 ./build_dir
-          du -h --max-depth=1 ./bin
+          du -h --max-depth=1 ./openwrt --exclude=build_dir --exclude=bin
+          du -h --max-depth=1 ./openwrt/build_dir
+          du -h --max-depth=1 ./openwrt/bin
 
     - name: Prepare artifact
       run: |
@@ -87,4 +90,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: OpenWrt_firmware
-          path: ./bin/targets/
+          path: ./openwrt/bin/targets/
