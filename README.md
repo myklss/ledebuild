@@ -8,5 +8,6 @@
    ./scripts/feeds install -a
    make menuconfig
    ```
-把本地生成的.config配置文件和feeds.conf.default配置文件内容替换到对应的.config.bak和feeds.conf.default.bak中
-点Fork到自己的项目点Actions，选择"编译openwrt",点击"Run workflow"即可开始编译
+把本地生成的.config配置文件和feeds.conf.default配置文件内容替换到对应的.config.bak和feeds.conf.default.bak
+
+找到Fork到自己的项目点Actions，选择"编译openwrt",点击"Run workflow"即可开始编译
