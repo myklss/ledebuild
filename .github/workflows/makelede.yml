@@ -43,7 +43,7 @@ jobs:
       run: ls -a
       
     - name: Load custom feeds
-      run: mv feeds.conf.default.bak openwrt/feeds.conf.default
+      run: mv feeds.conf.default.bak feeds.conf.default
 
     - name: Update feeds And Install feeds
       run: ./scripts/feeds update -a && ./scripts/feeds install -a
