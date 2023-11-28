@@ -1,4 +1,9 @@
 使用github的workflows来编译lede固件,替代使用服务器来编译
+#方式1:
+
+找到Fork到自己的项目点Actions，选择"编译openwrt",点击"Run workflow"即可开始编译
+
+#方式2:
 1. 首先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS
 
 2. 安装编译依赖
@@ -25,5 +30,3 @@
    make menuconfig
    ```
 把本地生成的.config配置文件和feeds.conf.default配置文件内容替换到对应的.config.bak和feeds.conf.default.bak
-
-找到Fork到自己的项目点Actions，选择"编译openwrt",点击"Run workflow"即可开始编译
