@@ -1,4 +1,5 @@
 使用github的workflows来编译lede固件,替代使用服务器来编译
+
 #方式1:
 
 找到Fork到自己的项目点Actions，选择"编译openwrt",点击"Run workflow"即可开始编译
