@@ -41,18 +41,12 @@ jobs:
       
     - name: ls
       run: ls -a
-
-    - name: remove default feeds
-      run: rm -f feeds.conf.default
       
     - name: Load custom feeds
       run: mv feeds.conf.default.bak openwrt/feeds.conf.default
 
-    - name: Update feeds
-      run: scripts/feeds update -a
-
-    - name: Install feeds
-      run: scripts/feeds install -a
+    - name: Update feeds And Install feeds
+      run: ./scripts/feeds update -a && ./scripts/feeds install -a
 
     #- name: Modify default IP      #修改默认IP(默认注释,要修改IP把这2行#去掉即可)
     #  run: sed -i 's/192.168.1.1/192.168.7.41/g' package/base-files/files/bin/config_generate
