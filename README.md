@@ -8,7 +8,7 @@ Fork到自己的项目内点Actions，选择"编译openwrt",点击"Run workflow"
 
 出现"SSH: ssh xxx@xxx.tmate.io",就ssh登录xxx.tmate.io，@前面的xxx为用户名(没有密码)，登录进去后快捷键输入ctrl+c
 
-然后输入命令make menuconfig即可配置openwrt，配置完成后输入命令exit退出ssh，github actions会自动运行后面的编译任务
+然后输入命令```bash make menuconfig ```即可配置openwrt，配置完成后输入命令exit退出ssh，github actions会自动运行后面的编译任务
 
 
 **方式2:**
