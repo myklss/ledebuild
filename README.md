@@ -10,6 +10,7 @@ Fork到自己的项目内点Actions，选择"编译openwrt",点击"Run workflow"
 
 然后输入命令make menuconfig即可配置openwrt，配置完成后输入命令exit退出ssh，github actions会自动运行后面的编译任务
 
+
 **方式2:**
 
 先装好 Linux 系统，推荐 Debian 11 或 Ubuntu LTS,创建非root用户
