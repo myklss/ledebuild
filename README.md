@@ -1,4 +1,4 @@
-**使用github的workflows来编译lede固件,替代使用服务器来编译**
+**使用github的Actions来编译lede固件,替代使用服务器来编译**
 
 **方式1:**
 
