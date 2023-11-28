@@ -1,0 +1,84 @@
+name: 编译openwrt
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+env:
+  REPO_URL: https://github.com/coolsnowwolf/lede
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo -E apt-get -qq update
+        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+        sudo -E apt-get -qq autoremove --purge
+        sudo -E apt-get -qq clean
+        sudo -E timedatectl set-timezone "Asia/Shanghai"
+        
+    - name: Clone source code
+      run: |
+        df -hT $PWD
+        git clone $REPO_URL openwrt
+        
+    - name: Move project
+      run: mv $GITHUB_WORKSPACE/openwrt/* $GITHUB_WORKSPACE
+      
+    - name: ls
+      run: ls -a
+      
+    - name: Load custom feeds
+      run: mv feeds.conf.default.bak openwrt/feeds.conf.default
+
+    - name: Update feeds And Install feeds
+      run: scripts/feeds update -a && scripts/feeds install -a
+
+    - name: Modify default IP
+      run: sed -i 's/192.168.1.1/192.168.7.41/g' package/base-files/files/bin/config_generate
+        
+    - name: Load custom configuration
+      run: mv .config.bak .config
+
+    - name: Download packages
+      run: make download -j16
+
+    - name: Compile firmware
+      run: |
+         echo -e "$(nproc) thread compile"
+         make -j$(nproc) || make -j1 || make -j1 V=s
+
+    - name: Prepare artifact
+      run: |
+          mkdir -p ./artifact/package
+          mkdir -p ./artifact/buildinfo
+          rm -rf $(find ./bin/targets/ -type d -name "packages")
+          cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
+          cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
+
+    - name: Upload buildinfo
+      uses: actions/upload-artifact@v3
+      with:
+          name: OpenWrt_buildinfo
+          path: ./artifact/buildinfo/
+
+    - name: Upload package
+      uses: actions/upload-artifact@v3
+      with:
+          name: OpenWrt_package
+          path: ./artifact/package/
+
+    - name: Upload firmware
+      uses: actions/upload-artifact@v3
+      with:
+          name: OpenWrt_firmware
+          path: ./bin/targets/
