@@ -54,7 +54,7 @@ jobs:
     - name: Load custom configuration
       run: mv .config.bak .config
 
-    - name: Debugging with tmate
+    - name: Use tmate connect ssh
       uses: mxschmitt/action-tmate@v3.17
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
             
