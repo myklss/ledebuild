@@ -2,7 +2,7 @@
 
 **方式1:**
 
-Fork到自己的项目内点Actions，选择"编译openwrt",点击"Run workflow"，看到SSH connection to Actions输入框输入"true"然后点击Run workflow
+Fork到自己的储存库内点Actions，选择"编译openwrt",点击"Run workflow"，看到SSH connection to Actions输入框输入"true"然后点击Run workflow
 
 再次点击"编译openwrt"中间出现workflow runs，选择中间的"编译openwrt",点build,等待任务进行到"Debugging with tmate"
 
