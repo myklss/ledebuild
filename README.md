@@ -8,7 +8,7 @@ Fork到自己的储存库内点Actions，选择"编译openwrt",点击"Run workfl
 
 2个ssh连接方式
 
-方式1:看到```Web shell: https://tmate.io/t/xxx```快捷键```ctrl+c```即可
+方式1:看到```Web shell: https://tmate.io/t/xxx```点击访问，然后快捷键```ctrl+c```即可
 
 方式2:```SSH: ssh xxx@xxx.tmate.io```,就ssh登录xxx.tmate.io，@前面的xxx为用户名(没有密码)，登录进去后快捷键输入```ctrl+c```
 
