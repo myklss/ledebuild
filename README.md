@@ -6,7 +6,11 @@ Fork到自己的储存库内点Actions，选择"编译openwrt",点击"Run workfl
 
 再次点击"编译openwrt"中间出现workflow runs，选择中间的"编译openwrt",点build,等待任务进行到"Use tmate connect ssh"
 
-出现"SSH: ssh xxx@xxx.tmate.io",就ssh登录xxx.tmate.io，@前面的xxx为用户名(没有密码)，登录进去后快捷键输入ctrl+c
+2个ssh连接方式
+
+方式1:看到```Web shell: https://tmate.io/t/xxx```快捷键```ctrl+c```即可
+
+方式2:```SSH: ssh xxx@xxx.tmate.io```,就ssh登录xxx.tmate.io，@前面的xxx为用户名(没有密码)，登录进去后快捷键输入```ctrl+c```
 
 然后输入命令``` make menuconfig ```即可配置openwrt，配置完成后输入命令exit退出ssh，github actions会自动运行后面的编译任务
 
