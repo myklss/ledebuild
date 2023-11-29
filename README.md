@@ -4,7 +4,7 @@
 
 Fork到自己的储存库内点Actions，选择"编译openwrt",点击"Run workflow"，看到SSH connection to Actions输入框输入"true"然后点击Run workflow
 
-再次点击"编译openwrt"中间出现workflow runs，选择中间的"编译openwrt",点build,等待任务进行到"Debugging with tmate"
+再次点击"编译openwrt"中间出现workflow runs，选择中间的"编译openwrt",点build,等待任务进行到"Use tmate connect ssh"
 
 出现"SSH: ssh xxx@xxx.tmate.io",就ssh登录xxx.tmate.io，@前面的xxx为用户名(没有密码)，登录进去后快捷键输入ctrl+c
 
