@@ -34,4 +34,4 @@ Fork到自己的储存库内点Actions，选择"编译openwrt",点击"Run workfl
    ./scripts/feeds install -a
    make menuconfig
    ```
-然后Fork到自己的项目库,把本地生成的.config配置文件和feeds.conf.default配置文件内容替换到对应的.config.bak和feeds.conf.default.bak
+然后Fork到自己的储存库,把本地生成的.config配置文件和feeds.conf.default配置文件内容替换到对应的.config.bak和feeds.conf.default.bak
