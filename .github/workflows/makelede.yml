@@ -19,7 +19,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-        fetch-depth:0
 
     - name: Initialization environment
       env:
@@ -36,14 +35,6 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL openwrt
-
-    - name: cache
-      uses: klever1988/cachewrtbuild@main
-      with:
-          ccache: false #是否一并缓存.ccache目录，如果你启用了ccache。这是唯一的常用参数，其他三个用于除错，一般不需要调整
-          toolchain: true #是否缓存工具链目录
-          skip: true #是否跳过工具链编译
-          clean: false #清空缓存
           
     - name: Move project
       run: mv $GITHUB_WORKSPACE/openwrt/* $GITHUB_WORKSPACE
